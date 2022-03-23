@@ -1,0 +1,34 @@
+/*
+init.js
+James Watson, 2015 January
+Setup and helpers for REPLacement Chrome App
+*/
+
+/*
+ == LOG ==
+2015-01-16: * Created file
+            * Copied definitions from "REPLacement.htm"
+*/
+
+/* The following adds 'String.trim' where it does not already exist, which is not a standard feature of IE8. Taken from:
+URL: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim */
+if( !String.prototype.trim ){ String.prototype.trim = function(){ return this.replace(/^\s+|\s+$/gm, ''); }; }
+
+// Store references to <PRE>s for access
+var preDebug = document.getElementById('debug');
+var preDisplay = document.getElementById('display');
+
+// Store references to <TEXTAREA>s for access
+var txtInput = document.getElementById('input');
+var txtOutput = document.getElementById('output');
+
+// Test writing to <TEXTAREA>s, 2013-04-17: Both *.innerText and *.value seem to work
+txtInput.value = ""; 
+txtOutput.value = "";
+
+txtInput.outputTarget = txtOutput; // Refernce to the <TEXTAREA> where output will be sent
+	
+function append_eval_result(inbox, outbox){ // eval inbox with 'REPLacement', write to outbox, then erase inbox
+	outbox.value += (outbox.value ? "\n" : "") + "input: " + inbox.value.trim() + " -->\n" + p(value(s(inbox.value)));
+	inbox.value = "";
+}

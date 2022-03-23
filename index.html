@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<!--
+index.html
+James Watson, 2015 January
+Main HTML display for REPLacement Chrome App
+
+ == LOG ==
+2015-02-04: It was necessary to load "js/external.js" before "js/init.js"
+2015-01-16: * File created
+            * Copied structure from "REPLacement.htm"
+-->
+
+
+
+	<head>
+		<meta charset="utf-8">
+		<!-- http://stackoverflow.com/questions/6771258/whats-the-difference-if-meta-http-equiv-x-ua-compatible-content-ie-edge-e -->
+		<title>((REPL)acement) Scheme</title>
+		<!-- link rel="stylesheet" href="SHEETNAME.css" -->
+	</head>
+
+	<body>
+
+		<div id="REPL">
+			Output
+			<textarea id="output" cols="48" rows="20"></textarea>
+			<div style="background-color:#F5F5F5;height:100px;width:400px;">
+				<pre id="display" cols="48" rows="4"></pre>
+			</div>
+			Input
+			<textarea id="input" cols="48" rows="4"></textarea>
+		</div>
+
+		<pre id="debug"></pre>
+
+		<footer id="info">
+			<button id="btnChooseDir">Choose Path</button>
+			<button id="btnChooseFil">Choose File</button>
+			<button id="btnEditor">Start Editor</button>
+		</footer>
+
+		<!-- Includes -->
+		<script src="js/external.js"></script> <!-- -- Load 1 "js/init.js". External file actions, environment-specific -->
+		<script src="js/init.js"></script> <!-- ------ Load 2 Helpers and setup -->
+		<script src="js/REPLacement.js"></script> <!-- Load 3REPLacement Scheme evaluator -->
+		
+	</body>
+
+</html>
